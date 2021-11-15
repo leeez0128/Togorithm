@@ -29,7 +29,7 @@
 태그나 피드백이 필요한 경우, Slack의 멘션과 스레드를 이용하여 작성합니다. 
 
 ### 2. 주 1회 코드리뷰
-대면/비대면 혼용 방식으로 매주 토요일 저녁에 진행합닏.
+대면/비대면 혼용 방식으로 매주 토요일 저녁에 진행합니다.
 
 ### 3. 풀이 고민 시간 : 30분~60분
 최소 30분 이상 문제 풀이방법에 대해 고민합니다. <br>
@@ -79,3 +79,43 @@
 |||W6: Deprecation warning|
 ||E7: Statement||
 ||E9: Runtime||
+
+## ✅ 참고사항 
+ * 입출력
+  입출력을 위한 예제 코드입니다. 빠른 입출력을 위해 다음과 같이 사용한다고 합니다. 
+  아래 코드는 사용자의 입력을 input().strip() 을 이용하여 받고, 문자열 마지막의 띄어쓰기를 무시한다는 뜻입니다.
+  그리고 .split()를 통해 띄어쓰기를 구분하고 map(int, ....) 를 이용하여 문자열을 int형으로 변환합니다.
+ ``` python
+   import sys 
+   input = sys.stdin.readline
+   
+   M, N, K = map(int, input().strip().split())
+   # 입력 예시 ) 1 2 3
+   print(f'{M} {N} {K}') # 1 2 3 출력
+ ```  
+ 
+ * 함수형
+ ```if __name__ == "__main__":```  : 아래에는 인풋 받는 부분과 main함수 하나만 작성하여 main함수에 인풋을 받아서 main 함수를 위쪽에 구현하는 방식으로 연습해봅시다.
+ > 네이버, 카카오, 소마 등 구름, 프로그래머스 기반의 코테 사이트들을 사용하는 코테는 함수형으로 알고리즘 문제를 작성합니다.
+ ``` python
+  import sys
+  input = sys.stdin.readline
+  
+  def myFunction(param):
+    answer = []
+    ...
+    
+    return answer[]
+
+  if __name__ == "__main__":
+      T = int(input().strip())
+      for _ in range(0,T):
+          ...
+          myFunction([])
+ ```
+ 
+  * 강제종료
+ ```python
+  sys.exit(0)
+  # sys.exit(1)하면 런타임에러 발생
+ ```
