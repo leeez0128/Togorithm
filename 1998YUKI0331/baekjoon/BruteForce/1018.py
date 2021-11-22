@@ -31,15 +31,11 @@ def solution(N, M, Board):
 
     for i in range(N - 8 + 1):
         for j in range(M - 8 + 1):
-            W_sum = 0
-            B_sum = 0
             W_temp = [row[j:j + 8] for row in W_Board[i:i + 8]]
             B_temp = [row[j:j + 8] for row in B_Board[i:i + 8]]
-            for idx in range(8):
-                W_sum += sum(W_temp[idx])
-                B_sum += sum(B_temp[idx])
-            if result > min(W_sum, B_sum):
-                result = min(W_sum, B_sum)
+
+            if result > min(sum(sum(W_temp, [])), sum(sum(B_temp, []))):
+                result = min(sum(sum(W_temp, [])), sum(sum(B_temp, [])))
 
     return result
 
