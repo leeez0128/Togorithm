@@ -2,21 +2,24 @@ import sys
 input = sys.stdin.readline
 
 
-# 사실 시간초과 뜸...
-def solution(i, j, N):
-    if (i // N) % 3 == 1 and (j // N) % 3 == 1:
-        print(" ", end="")
-    else:
-        if N // 3 == 0:
-            print("*", end="")
+def get_stars(n):
+    result = []
+    for i in range(3 * len(n)):
+        if i // len(n) == 1:
+            result.append(n[i % len(n)] + " " * len(n) + n[i % len(n)])
         else:
-            solution(i, j, N // 3)
+            result.append(n[i % len(n)] * 3)
+    return result
 
 
-if __name__ == '__main__':
-    N = int(input())
+star = ["***", "* *", "***"]
+n = int(input())
+e = 0
+while n != 3:
+    n = int(n / 3)
+    e += 1
 
-    for i in range(N):
-        for j in range(N):
-            solution(i, j, N)
-        print("")
+for i in range(e):
+    star = get_stars(star)
+for i in star:
+    print(i)
