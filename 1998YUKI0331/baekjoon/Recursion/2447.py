@@ -1,25 +1,30 @@
+# https://readytoearndon.tistory.com/11
+
 import sys
 input = sys.stdin.readline
 
 
-def get_stars(n):
+def solution(star):
     result = []
-    for i in range(3 * len(n)):
-        if i // len(n) == 1:
-            result.append(n[i % len(n)] + " " * len(n) + n[i % len(n)])
+    for i in range(3 * len(star)):
+        if i // len(star) == 1:
+            result.append(star[i % len(star)] + " " * len(star) + star[i % len(star)])
         else:
-            result.append(n[i % len(n)] * 3)
+            result.append(star[i % len(star)] * 3)
     return result
 
 
 star = ["***", "* *", "***"]
-n = int(input())
+N = int(input())
+# for i in range(int(N ** (1 / 3)) - 1):
+#     star = solution(star)
+
 e = 0
-while n != 3:
-    n = int(n / 3)
+while N != 3:
+    N = int(N / 3)
     e += 1
 
 for i in range(e):
-    star = get_stars(star)
+    star = solution(star)
 for i in star:
     print(i)
