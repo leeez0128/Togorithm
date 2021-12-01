@@ -2,20 +2,19 @@ import sys
 sys.setrecursionlimit(10*6)
 input = sys.stdin.readline
 result = []
-already = []
 
 
 def BackTracking(seq, use, M):
     if len(result) == M:
-        if str(result) not in already:
-            print(*result)
-            already.append(str(result))
-            return
+        print(*result)
+        return
     
+    duplicate = 0
     for num in range(len(seq)):
-        if not use[num]:
+        if not use[num] and duplicate != seq[num]:
             result.append(seq[num])
             use[num] = True
+            duplicate = seq[num]
             BackTracking(seq, use, M)
             result.pop()
             use[num] = False
