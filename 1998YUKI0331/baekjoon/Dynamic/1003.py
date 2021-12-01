@@ -3,16 +3,23 @@ input = sys.stdin.readline
 
 
 def solution(N):
-    cnt_0 = [1, 0]
-    cnt_1 = [0, 1]
-    for i in range(2, N + 1):
-        cnt_0.append(cnt_0[i - 1] + cnt_0[i - 2])
-        cnt_1.append(cnt_1[i - 1] + cnt_1[i - 2])
-    return cnt_0[N], cnt_1[N]
+    global dp
+
+    if N == 0 or N == 1:
+        return N
+    if dp[N] != 0:
+        return dp[N]
+    dp[N] = solution(N - 1) + solution(N - 2)
+    return dp[N]
 
 
 if __name__ == '__main__':
     T = int(input())
+    dp = [0] * 41
+
     for _ in range(T):
         N = int(input())
-        print(*solution(N), sep=" ")
+        if N == 0:
+            print("1 0")
+        else:
+            print(solution(N - 1), solution(N))
