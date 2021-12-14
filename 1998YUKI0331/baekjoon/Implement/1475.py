@@ -2,7 +2,7 @@ import sys
 input = sys.stdin.readline
 
 
-def solution(N):
+def solution(N):  # 시간복잡도 O(N)
     cnt = [0] * 10
     for i in N:
         cnt[int(i)] += 1
