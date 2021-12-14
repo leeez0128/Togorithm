@@ -12,7 +12,6 @@ def solution(podo):
     for i in range(3, len(podo)+1):
         dp.append(max(dp[i-1], podo[i-1] + podo[i-2] + dp[i-3], podo[i-1] + dp[i-2]))
     
-    print(dp)
     print(dp[-1])
     
 
