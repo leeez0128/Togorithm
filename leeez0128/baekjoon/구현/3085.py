@@ -1,34 +1,43 @@
 import sys
 input = sys.stdin.readline
 
+long_candy = 0
 
 def game(N, candy):
-    long_candy = 0 # max(long_candy, cnt+1)
+    global long_candy
     for i in range(N):
         cnt = 1
         for j in range(N-1):
             if candy[i][j] == candy[i][j+1]:
                 cnt += 1
             else:
-                if j is not N-2:
-                    cnt = 1
-        long_candy = max(long_candy, cnt)
-    
-    if long_candy != N:
-        long_candy += 1
-    
-    print('log~~', long_candy)
-    return long_candy
-
+                cnt = 1
+            long_candy = max(long_candy, cnt)
+            
 
 def solution(N, candy):
-    trans_candy = [list(x) for x in zip(*candy)]
-    print(max(game(N, candy), game(N, trans_candy)))
+    for i in range(N):
+        for j in range(N-1):
+            candy[i][j],candy[i][j+1] = candy[i][j+1],candy[i][j]
+            game(N, candy)
+            trans_candy = [list(x) for x in zip(*candy)]
+            game(N, trans_candy)
+            candy[i][j],candy[i][j+1] = candy[i][j+1],candy[i][j]
+
+    for i in range(N):
+        for j in range(N-1):
+            candy[j][i],candy[j+1][i] = candy[j+1][i],candy[j][i]
+            game(N, candy)
+            trans_candy = [list(x) for x in zip(*candy)]
+            game(N, trans_candy)
+            candy[j][i],candy[j+1][i] = candy[j+1][i],candy[j][i]
+  
+    print(long_candy)
 
 
 if __name__ == '__main__':
     N = int(input().strip())
     candy = []
     for _ in range(N):
-        candy.append(input().strip())
+        candy.append(list(input().strip()))
     solution(N, candy)
