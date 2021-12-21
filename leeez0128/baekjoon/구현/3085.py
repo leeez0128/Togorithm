@@ -3,6 +3,7 @@ input = sys.stdin.readline
 
 long_candy = 0
 
+
 def game(N, candy):
     global long_candy
     for i in range(N):
@@ -10,10 +11,10 @@ def game(N, candy):
         for j in range(N-1):
             if candy[i][j] == candy[i][j+1]:
                 cnt += 1
+                long_candy = max(long_candy, cnt)
             else:
                 cnt = 1
-            long_candy = max(long_candy, cnt)
-            
+
 
 def solution(N, candy):
     for i in range(N):
