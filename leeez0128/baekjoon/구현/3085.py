@@ -14,6 +14,8 @@ def game(N, candy):
                     cnt = 1
         long_candy = max(long_candy, cnt)
     
+    if long_candy != N:
+        long_candy += 1
     
     print('log~~', long_candy)
     return long_candy
