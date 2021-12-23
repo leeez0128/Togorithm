@@ -4,8 +4,7 @@ input = sys.stdin.readline
 seq = [0]
 
 def solution(A, B):
-    
-    for i in range(B):
+    for i in range(B+1):
         for _ in range(i):
             seq.append(i)
             if len(seq) >= (B+1):
