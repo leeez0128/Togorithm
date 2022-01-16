@@ -3,8 +3,7 @@ input = sys.stdin.readline
 
 
 def check_dia(result):
-    dia = 0
-    ok = 0
+    dia, ok = 0, 0
     for i in range(5):
         if result[4-i][i] == 1:
             ok += 1
@@ -38,14 +37,14 @@ def check_row(result):
 
 
 def solution(bingo, answer):
-    result = [[0]*5 for _ in range(5)]
+    result = [[0]*5 for _ in range(5)] #철수 빙고판 채점판
     for i in range(5):
         for j in range(5):
-            key = bingo[answer[i][j]]
+            key = bingo[answer[i][j]] #철수 빙고판에서 사회자가 부른 수의 위치 
             result[key//5][key%5] = 1
             res = check_row(result) + check_col(result) + check_dia(result)
             if res == 3:
-                return (i+1)*(j+1)
+                return 5*i + (j+1)
 
 
 if __name__ == '__main__':
