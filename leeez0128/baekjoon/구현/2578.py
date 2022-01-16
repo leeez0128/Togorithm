@@ -9,7 +9,7 @@ def check_dia(result):
             ok += 1
     if ok == 5:
         dia += 1
-        ok = 0
+    ok = 0
 
     for i in range(5):
         if result[i][i] == 1:
@@ -43,7 +43,7 @@ def solution(bingo, answer):
             key = bingo[answer[i][j]] #철수 빙고판에서 사회자가 부른 수의 위치 
             result[key//5][key%5] = 1
             res = check_row(result) + check_col(result) + check_dia(result)
-            if res == 3:
+            if res >= 3:
                 return 5*i + (j+1)
 
 
