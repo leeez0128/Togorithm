@@ -3,31 +3,35 @@ input = sys.stdin.readline
 
 
 def solution(S):
-    flag = False
     tag = ''
     word = ''
     for i in range(len(S)):
         if S[i] == '<':
+            if tag == "":
+                tag += S[i]
+                continue
+            tags = tag.split(" ")
+            for arr in tags:
+                word += arr[::-1]
+                word += " "
+            word = word.rstrip()
+            tag = ''
             tag += S[i]
-            flag = True
-        elif S[i] == '>' and flag == True:
+        elif S[i] == '>':
             tag += S[i]
             word += tag
             tag = ''
-            flag = False
-        
-        elif flag == True:
+
+        else:
             tag += S[i]
-
-        elif flag == False:
-            if S[i] == " ":
-                tag += S[i]
-                word += tag
-                tag = ""
-            else:
-                tag = S[i] + tag
-
-    print(word + tag)
+        
+        if i == len(S)-1:
+            tags = tag.split(" ")
+            for arr in tags:
+                word += arr[::-1]
+                word += " "
+        
+    print(word)
 
 
 if __name__ == '__main__':
