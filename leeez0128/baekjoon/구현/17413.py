@@ -2,6 +2,14 @@ import sys
 input = sys.stdin.readline
 
 
+def reverse_(tag, word):
+    tags = tag.split(" ")
+    for arr in tags:
+        word += arr[::-1]
+        word += " "
+    return word
+
+
 def solution(S):
     tag = ''
     word = ''
@@ -10,11 +18,7 @@ def solution(S):
             if tag == "":
                 tag += S[i]
                 continue
-            tags = tag.split(" ")
-            for arr in tags:
-                word += arr[::-1]
-                word += " "
-            word = word.rstrip()
+            word = reverse_(tag, word).rstrip()
             tag = ''
             tag += S[i]
         elif S[i] == '>':
@@ -26,10 +30,8 @@ def solution(S):
             tag += S[i]
         
         if i == len(S)-1:
-            tags = tag.split(" ")
-            for arr in tags:
-                word += arr[::-1]
-                word += " "
+            word = reverse_(tag, word)
+
         
     print(word)
 
