@@ -32,7 +32,6 @@ def solution(S):
         if i == len(S)-1:
             word = reverse_(tag, word)
 
-        
     print(word)
 
 
