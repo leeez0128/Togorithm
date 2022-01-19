@@ -10,10 +10,13 @@ def solution(N, M, square):
             dist = min(N-i, M-j) - 1
             edge = square[i][j]
 
-            while dist > res:
+            while dist >= res:
                 if square[i][j+dist] == edge and square[i+dist][j] == edge and square[i+dist][j+dist] == edge:
                     res = dist + 1
                 dist -= 1
+    if res == 0:
+        print(1)
+        return
 
     print((res)**2)
                         
