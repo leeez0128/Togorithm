@@ -4,7 +4,6 @@ input = sys.stdin.readline
 
 def solution(sen):
     stack = []
-    result = 1
         
     for ch in sen:
         if ch == '(' or ch == '[':
@@ -13,24 +12,24 @@ def solution(sen):
             if stack and stack[-1] == '(':
                 stack.pop()
             else:
-                result = 0
+                stack.append(0)
                 break
         elif ch == ']':
             if stack and stack[-1] == '[':
                 stack.pop()
             else:
-                result = 0
+                stack.append(0)
                 break
     
-    if result == 1:
-        print("yes")
-    else:
+    if stack:
         print("no")
+    else:
+        print("yes")
 
 
 if __name__ == '__main__':
     while True:
-        sen = input().strip()
+        sen = input().rstrip()
         if sen == '.':
             break
         solution(sen)
