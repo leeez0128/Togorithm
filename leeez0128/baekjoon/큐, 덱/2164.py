@@ -6,7 +6,6 @@ input = sys.stdin.readline
 def solution(N, queue):
     while len(queue) != 1:
         queue.popleft()
-        print(queue)
         queue.append(queue.popleft())
 
     print(queue[-1])
