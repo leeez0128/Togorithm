@@ -2,28 +2,28 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-# p : RDD
-# n : 4
-# arr : [1, 2, 3, 4]
+
 def solution(p, n, arr):
+    rev = 0
+    
     for i in range(len(p)):
         if p[i] == 'R':
-            arr.reverse()
+            rev += 1
         else: # 'D'
-            if not arr:
+            if len(arr) == 0 or arr[0] == '':
                 print("error")
                 return
             else:
-                arr.popleft()
-                
-    print("[", end="")
-    for i in range(len(arr)):
-        if i == len(arr) - 1:
-            print(arr[i], sep="", end="")
-        else:
-            print(arr[i], ",", sep="", end="")
-    print("]")
+                if rev % 2 == 0:
+                    arr.popleft()
+                else:
+                    arr.pop()
 
+    if rev % 2 == 0:
+        print("[", ",".join(arr), "]", sep="")
+    else:
+        arr.reverse()
+        print("[", ",".join(arr), "]", sep="")
     
 
 if __name__ == '__main__':
@@ -31,11 +31,5 @@ if __name__ == '__main__':
     for _ in range(T):
         p = input().strip()
         n = int(input().strip())
-        # arr = deque()
-        arr = deque(input().strip().split("[")[1].split("]")[0])
-        print("####", len(arr))
-        # if len(temp) > 1:
-        #     temp = temp.split(",")
-        # for num in temp:
-        #     arr.append(int(num))
-        # solution(p, n, arr)
+        arr = deque(input().strip()[1:-1].split(","))
+        solution(p, n, arr)
