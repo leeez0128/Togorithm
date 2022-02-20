@@ -3,7 +3,6 @@ input = sys.stdin.readline
 
 
 def solution(N, F):
-    
     for i in range(100):
         if i < 10:
             change = '0' + str(i)
