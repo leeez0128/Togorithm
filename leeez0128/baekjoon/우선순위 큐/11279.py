@@ -1,4 +1,4 @@
-import sys
+import sys, heapq
 input = sys.stdin.readline
 
 
@@ -7,15 +7,13 @@ def solution(x):
     if x == 0:
         if len(result) == 0:
             print(0)
-            return
-        result.sort()
-        print(result.pop())
+        else:
+            print((-1)*heapq.heappop(result)) #heappop : pop up the smallest(pop left)
     elif x > 0:
-        result.append(x)
+        heapq.heappush(result, (-1)*x) #heappush : push with sorted(acs)
 
 
 if __name__ == '__main__':
     N = int(input().strip())
     for _ in range(N):
-        x = int(input().strip())
-        solution(x)
+        solution(int(input().strip()))
