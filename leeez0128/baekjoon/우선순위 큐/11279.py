@@ -8,9 +8,9 @@ def solution(x):
         if len(result) == 0:
             print(0)
         else:
-            print((-1)*heapq.heappop(result)) #heappop : pop up the smallest(pop left)
+            print((-1)*heapq.heappop(result)) 
     elif x > 0:
-        heapq.heappush(result, (-1)*x) #heappush : push with sorted(acs)
+        heapq.heappush(result, (-1)*x) 
 
 
 if __name__ == '__main__':
